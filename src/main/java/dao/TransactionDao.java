@@ -18,6 +18,8 @@ public class TransactionDao {
     private String owner_code;
     private String accommodation_code;
 
+    public TransactionDao() {}
+
     public TransactionDao(String code, Instant date, float commission, float price, AccommodationGoal type, String customer_code, String estateAgent_code, String owner_code, String accommodation_code) {
         this.code = code;
         this.date = date;

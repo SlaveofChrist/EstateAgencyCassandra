@@ -1,5 +1,6 @@
 package entity;
 
+import Generation.InstantConverter;
 import com.opencsv.bean.*;
 
 import java.time.Instant;
@@ -22,14 +23,10 @@ public class Accommodation {
     private int floorSpace;
     @CsvBindByName(column = "state", required = true)
     private AccommodationState state;
-    @CsvBindByName(column = "price", capture = "\\$(.+)", required = true)
+    @CsvBindByName(column = "price", capture = "[$€]?(.+)", required = true)
     private double price;
-//    @CsvBindByName(column = "availability_date", required = true)
-//    @CsvDate(
-//            value = "dd-MM-yyyy",
-//            writeFormat = "dd-MM-yyyy",
-//            writeFormatEqualsReadFormat = false
-//            )
+    @CsvBindByName(column = "availability_date", required = true)
+    @CsvDate(value = "yyyy-MM-dd'T'HH:mm:ssX")
     private Instant availabilityDate;
     @CsvRecurse
     private Address address;

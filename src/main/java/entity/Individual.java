@@ -1,6 +1,7 @@
 package entity;
 
 import com.opencsv.bean.CsvBindByName;
+import com.opencsv.bean.CsvDate;
 import com.opencsv.bean.CsvRecurse;
 
 import java.time.Instant;
@@ -13,12 +14,13 @@ public class Individual {
     private String name;
     @CsvBindByName(column = "surname", required = true)
     private String surname;
+    @CsvBindByName(column = "birthday", required = true)
+    @CsvDate(value = "yyyy-MM-dd'T'HH:mm:ssX")
     private Instant birthday;
     @CsvRecurse
     private Address address;
 
-    public Individual() {
-    }
+    public Individual() {}
 
     public Individual(String code, String name, String surname, Instant birthday, int streetNumber, String street, String city, String postalCode, String country) {
         this.code = code;

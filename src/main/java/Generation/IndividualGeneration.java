@@ -25,7 +25,6 @@ public class IndividualGeneration {
                     .withIgnoreEmptyLine(true)
                     .build();
             List<Individual> individuals = csvReader.parse();
-            System.out.println("1");
         } catch (FileNotFoundException e) {
             System.out.println("File not found: " + individualsFilePath);
         }
