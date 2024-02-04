@@ -1,8 +1,6 @@
 package dao;
 
-import entity.Accommodation;
 import entity.AccommodationGoal;
-import entity.Individual;
 
 import java.time.Instant;
 
@@ -13,23 +11,23 @@ public class TransactionDao {
     private float commission;
     private float price;
     private AccommodationGoal type;
-    private String customer_code;
-    private String estateAgent_code;
-    private String owner_code;
-    private String accommodation_code;
+    private String customerCode;
+    private String estateAgentCode;
+    private String ownerCode;
+    private String accommodationCode;
 
     public TransactionDao() {}
 
-    public TransactionDao(String code, Instant date, float commission, float price, AccommodationGoal type, String customer_code, String estateAgent_code, String owner_code, String accommodation_code) {
+    public TransactionDao(String code, Instant date, float commission, float price, AccommodationGoal type, String customerCode, String estateAgentCode, String ownerCode, String accommodationCode) {
         this.code = code;
         this.date = date;
         this.commission = commission;
         this.price = price;
         this.type = type;
-        this.customer_code = customer_code;
-        this.estateAgent_code = estateAgent_code;
-        this.owner_code = owner_code;
-        this.accommodation_code = accommodation_code;
+        this.customerCode = customerCode;
+        this.estateAgentCode = estateAgentCode;
+        this.ownerCode = ownerCode;
+        this.accommodationCode = accommodationCode;
     }
 
     public String getCode() {
@@ -72,35 +70,35 @@ public class TransactionDao {
         this.type = type;
     }
 
-    public String getCustomer_code() {
-        return customer_code;
+    public String getCustomerCode() {
+        return customerCode;
     }
 
-    public void setCustomer_code(String customer_code) {
-        this.customer_code = customer_code;
+    public void setCustomerCode(String customerCode) {
+        this.customerCode = customerCode;
     }
 
-    public String getEstateAgent_code() {
-        return estateAgent_code;
+    public String getEstateAgentCode() {
+        return estateAgentCode;
     }
 
-    public void setEstateAgent_code(String estateAgent_code) {
-        this.estateAgent_code = estateAgent_code;
+    public void setEstateAgentCode(String estateAgentCode) {
+        this.estateAgentCode = estateAgentCode;
     }
 
-    public String getOwner_code() {
-        return owner_code;
+    public String getOwnerCode() {
+        return ownerCode;
     }
 
-    public void setOwner_code(String owner_code) {
-        this.owner_code = owner_code;
+    public void setOwnerCode(String ownerCode) {
+        this.ownerCode = ownerCode;
     }
 
-    public String getAccommodation_code() {
-        return accommodation_code;
+    public String getAccommodationCode() {
+        return accommodationCode;
     }
 
-    public void setAccommodation_code(String accommodation_code) {
-        this.accommodation_code = accommodation_code;
+    public void setAccommodationCode(String accommodationCode) {
+        this.accommodationCode = accommodationCode;
     }
 }

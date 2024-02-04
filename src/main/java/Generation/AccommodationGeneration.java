@@ -11,18 +11,15 @@ import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.Reader;
+import java.util.ArrayList;
 import java.util.List;
 
 public class AccommodationGeneration {
 
+    private final static String accommodationsFilePath = "data/accommodations.csv";
 
-    private CassandraConnection connection;
-    private CqlSession session;
-    private AccommodationRepository accommodationRepository;
-
-    private final String accommodationsFilePath = "data/accommodations.csv";
-
-    public AccommodationGeneration(){
+    public static void generateAndSave(){
+        List<Accommodation> accommodations = new ArrayList<>();
         try{
             Reader reader = new BufferedReader(new FileReader(accommodationsFilePath));
             CsvToBean<Accommodation> csvReader = new CsvToBeanBuilder<Accommodation>(reader)
@@ -31,20 +28,22 @@ public class AccommodationGeneration {
                     .withIgnoreLeadingWhiteSpace(true)
                     .withIgnoreEmptyLine(true)
                     .build();
-            List<Accommodation> accommodations = csvReader.parse();
+            accommodations = csvReader.parse();
         }catch (FileNotFoundException e){
             System.out.println("File not found: " + accommodationsFilePath);
         }
 
+        CassandraConnection connection = new CassandraConnection();
+        connection.connect("127.0.0.1", 9042, "cassandra");
+        CqlSession session = connection.getSession();
+        AccommodationRepository accommodationRepository = new AccommodationRepository(session);
+        accommodationRepository.createTable();
 
-//        connection = new CassandraConnection();
-//        connection.connect();
-//        session = connection.getSession();
-//        accommodationRepository = new AccommodationRepository(session);
-//
-//        accommodationRepository.createTable();
-
-
+        accommodationRepository.createTable();
+        for (Accommodation accommodation : accommodations){
+            accommodationRepository.insertOrUpdateAccommodation(accommodation);
+        }
+        connection.close();
     }
 
 }

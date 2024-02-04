@@ -100,10 +100,10 @@ public class TransactionRepository extends Repository {
                 .setString(1, transactionDao.getType().name())
                 .setFloat(2, transactionDao.getCommission())
                 .setFloat(3, transactionDao.getPrice())
-                .setString(4, transactionDao.getOwner_code())
-                .setString(5, transactionDao.getEstateAgent_code())
-                .setString(6, transactionDao.getCustomer_code())
-                .setString(7, transactionDao.getAccommodation_code());
+                .setString(4, transactionDao.getOwnerCode())
+                .setString(5, transactionDao.getEstateAgentCode())
+                .setString(6, transactionDao.getCustomerCode())
+                .setString(7, transactionDao.getAccommodationCode());
 
         session.execute(statement);
 
