@@ -1,19 +1,31 @@
 package dao;
 
+import com.opencsv.bean.CsvBindByName;
+import com.opencsv.bean.CsvDate;
 import entity.AccommodationGoal;
 
 import java.time.Instant;
 
 public class TransactionDao {
 
+    @CsvBindByName(column = "code", required = true)
     private String code;
+    @CsvBindByName(column = "date", required = true)
+    @CsvDate(value = "yyyy-MM-dd'T'HH:mm:ssX")
     private Instant date;
+    @CsvBindByName(column = "commission", required = true)
     private float commission;
+    @CsvBindByName(column = "price", required = true)
     private float price;
+    @CsvBindByName(column = "type", required = true)
     private AccommodationGoal type;
+    @CsvBindByName(column = "customer_code", required = true)
     private String customerCode;
+    @CsvBindByName(column = "estate_agent_code", required = true)
     private String estateAgentCode;
+    @CsvBindByName(column = "owner_code", required = true)
     private String ownerCode;
+    @CsvBindByName(column = "accommodation_code", required = true)
     private String accommodationCode;
 
     public TransactionDao() {}

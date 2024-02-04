@@ -240,6 +240,10 @@ public class AccommodationRepository extends Repository {
         return result;
     }
 
+    public Accommodation selectByCode(String code) {
+        return selectByCode(null, code);
+    }
+
     public Accommodation selectByCode(String keyspace, String code) {
         Select select = QueryBuilder.selectFrom(TABLE_NAME).all()
                 .whereColumn("code").isEqualTo(QueryBuilder.bindMarker());
